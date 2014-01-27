@@ -204,11 +204,11 @@ void handleClient(EthernetClient *client) {
         if(STATUS == S_STANDBY_BREW) {
           BREWING_STATE = 0;
           STATUS = S_BREWING;
-          answer(client, "ok");
         }
         else if(STATUS == S_STANDBY_CMD) {
           STATUS = S_EXECUTING;
         }
+        answer(client, "ok");
       }
       else // oops ...
         invalid = true;
@@ -265,6 +265,7 @@ void execute() {
     digitalWrite(PUMP_PIN, LOW);
     digitalWrite(MAKER_PIN, LOW);
   }
+  STATUS = 0;
 }
 
 void setup() {
