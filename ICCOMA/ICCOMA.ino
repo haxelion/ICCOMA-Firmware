@@ -167,7 +167,7 @@ void handleClient(EthernetClient *client) {
     else
       invalid = true;
   }
-  else if(type == R_COMMAND) {
+  else if(type == R_COMMAND && STATUS < S_BREWING) {
     int cmd = getCmd(buffer);
     if(cmd>0 && cmd<4) {
       CMD = cmd;
